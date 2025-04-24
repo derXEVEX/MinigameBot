@@ -331,7 +331,6 @@ def game_button_callback(game: TicTacToeGame, button: Button):
             del active_ttt_games[str(game.turn.id)]
             return
 
-        # Wechsel den Zug
         game.turn = game.player2 if game.turn == game.player1 else game.player1
         await interaction.edit_original_response(
             content=f"🎮 Tic-Tac-Toe-Spiel läuft! Jetzt ist {game.turn.mention} dran.\n\n{game.get_board_display()}",
@@ -339,7 +338,6 @@ def game_button_callback(game: TicTacToeGame, button: Button):
         )
 
     return callback
-# Registrierung des Befehls
 @bot.tree.command(name="tictactoe", description="Starte ein Tic-Tac-Toe-Spiel gegen einen anderen Spieler!")
 @app_commands.describe(opponent="Der Spieler, gegen den du Tic-Tac-Toe spielen möchtest")
 async def tictactoe(interaction: discord.Interaction, opponent: discord.User):
